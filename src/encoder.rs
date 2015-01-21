@@ -203,7 +203,7 @@ impl<'a> serialize::Encoder for Encoder<'a> {
     }
 
     fn emit_map_elt_key< F >(&mut self, _idx: usize, mut f: F) -> EncoderResult
-  where F : FnMut(&mut Encoder<'a>) -> EncoderResult {
+  where F : FnOnce(&mut Self) -> EncoderResult {
         try!(f(self));
         let last = match self.data.last() {
             Some(d) => d,
