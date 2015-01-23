@@ -28,6 +28,7 @@ pub enum Error {
 
 impl fmt::Show for Error {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        use std::fmt::Debug;
         match *self {
             UnsupportedType => "unsupported type".fmt(f),
             InvalidStr => "invalid str".fmt(f),
